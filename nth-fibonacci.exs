@@ -3,7 +3,6 @@
 # the previous two—the sequence begins 0, 1, 1, 2, 3, 5. Your definition should
 # use a local tail-recursive function.
 
-
 defmodule Fib do
   def fib(n) do
     fib(n, 0, 1, 0)

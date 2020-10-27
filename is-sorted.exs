@@ -2,18 +2,21 @@
 # given comparison function.
 
 defmodule IsSorted do
-  def impl(as, ordered, isSorted) do
-    case as do
-      [h_1 | t] ->
-        case t do
-          [_ | []] ->
-            isSorted
-          [h_2 | _] ->
-            if ordered.(h_1, h_2) do impl(t, ordered, true)
-            else false end
-          end
+  def impl([h | t], is_ordered?) do
+    impl(t, h, is_ordered?, false)
+  end
+
+  def impl([], _, _, is_sorted?) do
+    is_sorted?
+  end
+
+  def impl([h_1 | t], h_2, is_ordered?, is_sorted?) do
+    if is_ordered?.(h_2, h_1) do
+      impl(t, h_1, is_ordered?, true)
+    else
+      is_sorted?
     end
   end
 end
 
-IO.puts(IsSorted.impl([1,2,3,4,5], fn a, b -> a < b end, false))
+IO.puts(IsSorted.impl([1,2,3,4,5], fn a, b -> a < b end))
