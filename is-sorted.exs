@@ -6,11 +6,11 @@ defmodule IsSorted do
     impl(t, h, is_ordered?, false)
   end
 
-  def impl([], _, _, is_sorted?) do
+  defp impl([], _, _, is_sorted?) do
     is_sorted?
   end
 
-  def impl([h_1 | t], h_2, is_ordered?, is_sorted?) do
+  defp impl([h_1 | t], h_2, is_ordered?, is_sorted?) do
     if is_ordered?.(h_2, h_1) do
       impl(t, h_1, is_ordered?, true)
     else

@@ -8,11 +8,11 @@ defmodule Fib do
     fib(n, 0, 1, 0)
   end
 
-  def fib(n, prev, current, i) when i < n do
+  defp fib(n, prev, current, i) when i < n do
     fib(n, current, prev + current, i + 1)
   end
 
-  def fib(_, prev, current, _) do
+  defp fib(_, prev, current, _) do
     prev + current
   end
 end
